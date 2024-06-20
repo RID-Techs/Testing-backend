@@ -33,15 +33,15 @@ const Login = async (req, res) => {
 
     res.cookie("AccessToken", token, {
         httpOnly: true,
-        secure: false, 
-        sameSite: "Lax",
+        secure: true, 
+        sameSite: "None",
         maxAge: 2 * 60 * 1000,
         path: "/"
     })
     res.cookie("RefreshToken", refreshToken, {
         httpOnly: true,
-        secure: false, 
-        sameSite: "Lax",
+        secure: true, 
+        sameSite: "None",
         maxAge: 1 * 24 * 60 * 60 * 1000,
         path: "/"
     })
@@ -65,8 +65,8 @@ const RefreshTokenCheck = async(req, res) => {
                     const newAccessToken = jwt.sign({User: user._id}, process.env.ACCESS_TOKEN, {expiresIn: "2m"})
                     res.cookie("AccessToken", newAccessToken, {
                         httpOnly: true,
-                        secure: false, 
-                        sameSite: "Lax",
+                        secure: true, 
+                        sameSite: "None",
                         maxAge: 2 * 60 * 1000,
                         path: "/"
                     })
@@ -88,14 +88,14 @@ const LogOut = async (req, res) => {
 
     res.clearCookie("AccessToken", {
         httpOnly: true,
-        secure: false,
-        sameSite: "Lax",
+        secure: true,
+        sameSite: "None",
         path: "/"
     })
     res.clearCookie("RefreshToken", {
         httpOnly: true,
-        secure: false,
-        sameSite: "Lax",
+        secure: true,
+        sameSite: "None",
         path: "/"
     })
 
