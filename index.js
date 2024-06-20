@@ -9,7 +9,7 @@ const port =process.env.PORT || 9003
 lunchDB() 
 
 app.use(cors({
-    origin: "http://localhost:5173",
+    origin: "https://testing-front-ti8z.onrender.com",
     credentials: true
 }))
 
